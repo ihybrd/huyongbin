@@ -29,7 +29,7 @@ title: Blog
         {% for post in tag[1] %}
           var li = document.createElement('li');
           var a2 = document.createElement("a");
-          a2.href = "{{ post.url }}";
+          a2.href = {{ post.url | relative_url | jsonify }};
           a2.innerText = "{{ post.title }}";
           var normalTextNode = document.createTextNode(' - {{ post.date | date: "%-d %b %Y" }}');
           li.appendChild(a2);
@@ -42,7 +42,7 @@ title: Blog
     {% for post in site.posts %}
       var li = document.createElement('li');
       var a2 = document.createElement("a");
-      a2.href = "{{ post.url }}";
+      a2.href = {{ post.url | relative_url | jsonify }};
       a2.innerText = "{{ post.title }}";
       var normalTextNode = document.createTextNode(' - {{ post.date | date: "%-d %b %Y" }}');
       li.appendChild(a2);
